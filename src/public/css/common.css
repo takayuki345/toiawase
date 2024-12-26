@@ -1,41 +1,29 @@
 .header {
     border-bottom: 1px solid rgb(224, 223, 222);
-    /* height: 76px; */
 }
 
 .header__inner {
-    padding: 10px 15px;
-    margin: 20px auto;
+    padding: 0 15px;
+    margin: 0 auto;
     max-width: 1230px;
-}
-
-.header-utilities {
-    position: relative;
 }
 
 .header__logo {
     text-align:center;
-    width: 300px;
     color: rgb(139, 121, 105);
-    position: absolute;
-    top: -35px;
-    left: 50%;
-    transform: translateX(-150px);
     font-family: serif;
     font-size: 40px;
+    margin: 17px auto;
 }
 
-.header-nav {
-    width: 90px;
-    display: flex;
-    margin: 0 0 0 auto;
+.header__option {
+    width: 100px;
+    position: absolute;
+    right: 15%;
+    top: 35px;
 }
 
-.header-nav__item {
-    width: 100%;
-}
-
-.header-nav__item button {
+.header__option button {
     display: inline-block;
     width: 100%;
     height: 35px;
@@ -47,7 +35,7 @@
     cursor: pointer;
 }
 
-.header-nav__item a {
+.header__option a {
     display: inline-block;
     width: 100%;
     height: 35px;

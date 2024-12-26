@@ -53,3 +53,7 @@
     margin: 50px auto;
     cursor: pointer;
 }
+
+.form__error {
+    color: red;
+}

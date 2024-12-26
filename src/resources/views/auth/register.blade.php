@@ -5,6 +5,9 @@
 @endsection
 
 @section('content')
+<div class="header__option">
+    <a href="/login">login</a>
+</div>
 <div class="register__content">
     <div class="register-form__heading">
         <h2>Register</h2>

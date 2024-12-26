@@ -15,22 +15,14 @@
                 <h1 class="header__logo">FashionablyLate</h1>
             </div>
             <nav>
-                <ul class="header-nav">
-                    @if (Auth::check())
-                    <li class="header-nav__item">
-                        <form action="/logout" method="post">
-                            @csrf
-                            <button>logout</button>
-                        </form>
-                    </li>
-                    @endif
-                    <!-- <li class="header-nav__item">
-                        <a href="">login</a>
-                    </li> -->
-                    <!-- <li class="header-nav__item">
-                        <a href="">registor</a>
-                    </li> -->
-                </ul>
+                @if (Auth::check())
+                <div class="header__option">
+                    <form action="/logout" method="post">
+                        @csrf
+                        <button>logout</button>
+                    </form>
+                </div>
+                @endif
             </nav>
         </div>
     </header>
