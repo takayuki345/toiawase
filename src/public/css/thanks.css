@@ -1,0 +1,45 @@
+body {
+    height: 100vh;
+}
+
+.text-container {
+    display: flex;
+    position: relative;
+    height: 100%;
+    /* width: 100%; */
+    justify-content: center;
+    align-items: center;
+}
+
+.back-text__message {
+    font-size: 18vw;
+    font-family: serif;
+    color: rgb(249, 248, 247);
+    /* width: 100%; */
+}
+
+.front-text {
+    position: absolute;
+    /* background-color: yellow; */
+    width: 37%;
+    text-align: center;
+    /* z-index: 10; */
+}
+
+.front-text__message {
+    font-size: 2vw;
+    color: rgb(131, 119, 107);
+    /* background-color: red; */
+}
+
+.front-text__link {
+    margin-top: 2vh;
+    display: inline-block;
+    font-size: 1.1vw;
+    background-color: rgb(131, 119, 107);
+    color: white;
+    text-decoration: none;
+    padding: 0.6vh 1.9vw 0.4vh;
+    cursor: pointer;
+    font-family: serif;
+}
