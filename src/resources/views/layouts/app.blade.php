@@ -16,11 +16,14 @@
             </div>
             <nav>
                 <ul class="header-nav">
+                    @if (Auth::check())
                     <li class="header-nav__item">
-                        <form action="">
+                        <form action="/logout" method="post">
+                            @csrf
                             <button>logout</button>
                         </form>
                     </li>
+                    @endif
                     <!-- <li class="header-nav__item">
                         <a href="">login</a>
                     </li> -->
