@@ -63,6 +63,11 @@
     cursor: pointer;
 }
 
+svg.w-5.h-5 {
+    width: 30px;
+    height: 30px;
+}
+
 .search-table__inner {
     border: 1px solid rgb(139, 121, 105);
     width: 100%;

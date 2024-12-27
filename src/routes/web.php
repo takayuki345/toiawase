@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +22,9 @@ Route::get('/confirm', function () {
     return view('confirm');
 });
 
-Route::get('/admin', function() {
-    return view('admin');
-});
+Route::get('/admin', [ContactController::class, 'index']);
+
+Route::get('/admin/search', [ContactController::class, 'search']);
 
 Route::get('thanks', function () {
     return view('thanks');

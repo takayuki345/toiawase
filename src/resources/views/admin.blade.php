@@ -11,19 +11,23 @@
     </div>
     <div class="search-form">
         <form class="search-form__inner">
-            <input class="search-form__item-input" type="text" name="keyword" value="" placeholder="名前やメールアドレスを入力してください" />
-            <select class="search-form__item-select" name="gender">
+            <input class="search-form__item-input" type="text" name="keyword" placeholder="名前やメールアドレスを入力してください" />
+            <select class="search-form__item-select" name="gender_id">
                 <option value="">性別</option>
-                <option value="1">男性</option>
-                <option value="2">女性</option>
-                <option value="3">その他</option>
+                <hr>
+                @foreach ($genders as $gender)
+                <option value="{{ $gender['id'] }}">{{ $gender['name'] }}</option>
+                @endforeach
             </select>
-            <select class="search-form__item-select" name="category">
+            <select class="search-form__item-select" name="category_id">
                 <option value="">お問い合わせの種類</option>
-                <option value="1">商品の交換について</option>
+                <hr>
+                @foreach ($categories as $category)
+                <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
+                @endforeach
             </select>
-            <input class="search-form__item-input" type="date" name="date" value="" />
-            <button class="search-form__button-search" type="submit" formaction="" formmethod="">検索</button>
+            <input class="search-form__item-input" type="date" name="date" />
+            <button class="search-form__button-search" type="submit" formaction="/admin/search" formmethod="get">検索</button>
             <button class="search-form__button-reset" type="submit" formaction="" formmethod="">リセット</button>
         </form>
     </div>
@@ -31,7 +35,7 @@
         <form action="">
             <button class="search-option__button-export">エクスポート</button>
         </form>
-        <div class="pagenation">ページネーション</div>
+        <div class="pagenation">{{ $contacts->links() }}</div>
     </div>
     <div class="search-table">
         <table class="search-table__inner">
@@ -42,11 +46,12 @@
                 <th class="search-table__header">お問い合わせの種類</th>
                 <th class="search-table__header"></th>
             </tr>
+            @foreach ($contacts as $contact)
             <tr class="search-table__row">
-                <td class="search-table__item">山田　太郎</td>
-                <td class="search-table__item">男性</td>
-                <td class="search-table__item">test@example.com</td>
-                <td class="search-table__item">商品の交換について</td>
+                <td class="search-table__item">{{ $contact['first_name'] }}　{{ $contact['last_name'] }}</td>
+                <td class="search-table__item">{{ $contact['gender']['name'] }}</td>
+                <td class="search-table__item">{{ $contact['email'] }}</td>
+                <td class="search-table__item">{{ $contact['category']['content'] }}</td>
                 <td class="search-table__item">
                     <form action="">
                         <input type="hidden">
@@ -54,78 +59,7 @@
                     </form>
                 </td>
             </tr>
-            <tr class="search-table__row">
-                <td class="search-table__item">山田　太郎</td>
-                <td class="search-table__item">男性</td>
-                <td class="search-table__item">test@example.com</td>
-                <td class="search-table__item">商品の交換について</td>
-                <td class="search-table__item">
-                    <form action="">
-                        <input type="hidden">
-                        <button class="search-table__item-button">詳細</button>
-                    </form>
-                </td>
-            </tr>
-            <tr class="search-table__row">
-                <td class="search-table__item">山田　太郎</td>
-                <td class="search-table__item">男性</td>
-                <td class="search-table__item">test@example.com</td>
-                <td class="search-table__item">商品の交換について</td>
-                <td class="search-table__item">
-                    <form action="">
-                        <input type="hidden">
-                        <button class="search-table__item-button">詳細</button>
-                    </form>
-                </td>
-            </tr>
-            <tr class="search-table__row">
-                <td class="search-table__item">山田　太郎</td>
-                <td class="search-table__item">男性</td>
-                <td class="search-table__item">test@example.com</td>
-                <td class="search-table__item">商品の交換について</td>
-                <td class="search-table__item">
-                    <form action="">
-                        <input type="hidden">
-                        <button class="search-table__item-button">詳細</button>
-                    </form>
-                </td>
-            </tr>
-            <tr class="search-table__row">
-                <td class="search-table__item">山田　太郎</td>
-                <td class="search-table__item">男性</td>
-                <td class="search-table__item">test@example.com</td>
-                <td class="search-table__item">商品の交換について</td>
-                <td class="search-table__item">
-                    <form action="">
-                        <input type="hidden">
-                        <button class="search-table__item-button">詳細</button>
-                    </form>
-                </td>
-            </tr>
-            <tr class="search-table__row">
-                <td class="search-table__item">山田　太郎</td>
-                <td class="search-table__item">男性</td>
-                <td class="search-table__item">test@example.com</td>
-                <td class="search-table__item">商品の交換について</td>
-                <td class="search-table__item">
-                    <form action="">
-                        <input type="hidden">
-                        <button class="search-table__item-button">詳細</button>
-                    </form>
-                </td>
-            </tr>
-            <tr class="search-table__row">
-                <td class="search-table__item">山田　太郎</td>
-                <td class="search-table__item">男性</td>
-                <td class="search-table__item">test@example.com</td>
-                <td class="search-table__item">商品の交換について</td>
-                <td class="search-table__item">
-                    <form action="">
-                        <input type="hidden">
-                        <button class="search-table__item-button">詳細</button>
-                    </form>
-                </td>
-            </tr>
+            @endforeach
         </table>
     </div>
 </div>
