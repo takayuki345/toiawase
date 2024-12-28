@@ -18,15 +18,23 @@
             <div class="form__group-content">
                 <div class="form__group-content-name-inner">
                     <div class="form__input-text">
-                        <input type="text" name="first_name" placeholder="例:山田" />
+                        <input type="text" name="first_name" placeholder="例:山田" value="{{ old('first_name') }}" />
                     </div>
-                    <div class="form__error"></div>
+                    <div class="form__error">
+                        @error('first_name')
+                        {{$message}}
+                        @enderror
+                    </div>
                 </div>
                 <div class="form__group-content-name-inner">
                     <div class="form__input-text">
-                        <input type="text" name="last_name" placeholder="例:太郎" />
+                        <input type="text" name="last_name" placeholder="例:太郎" value="{{ old('last_name') }}" />
                     </div>
-                    <div class="form__error"></div>
+                    <div class="form__error">
+                        @error('last_name')
+                        {{ $message }}
+                        @enderror
+                    </div>
                 </div>
             </div>
         </div>
@@ -37,14 +45,16 @@
             <div class="form__group-content">
                 <div class="form__group-content-inner">
                     <div class="form__input-radio">
-                        <input type="radio" id="male" name="gender_id" value="1" checked />
-                        <label for="male">男性</label>
-                        <input type="radio" id="female" name="gender_id" value="2" />
-                        <label for="female">女性</label>
-                        <input type="radio" id="others" name="gender_id" value="3" />
-                        <label for="others">その他</label>
+                        @foreach ($genders as $gender)
+                        <input type="radio" id="{{ $gender['id'] }}" name="gender_id" value="{{ $gender['id'] }}" @if(old('gender_id', 1) == $gender['id']) checked @endif/>
+                        <label for="{{ $gender['id'] }}">{{ $gender['name'] }}</label>
+                        @endforeach
                     </div>
-                    <div class="form__error"></div>
+                    <div class="form__error">
+                        @error('gender_id')
+                        {{ $message }}
+                        @enderror
+                    </div>
                 </div>
             </div>
         </div>
@@ -55,9 +65,13 @@
             <div class="form__group-content">
                 <div class="form__group-content-inner">
                     <div class="form__input-email">
-                        <input type="email" name="email" placeholder="例:test@example.com" />
+                        <input type="text" name="email" placeholder="例:test@example.com" value="{{ old('email') }}" />
                     </div>
-                    <div class="form__error"></div>
+                    <div class="form__error">
+                        @error('email')
+                        {{ $message }}
+                        @enderror
+                    </div>
                 </div>
             </div>
         </div>
@@ -66,20 +80,30 @@
                 電話番号&nbsp;<span class="form__group-title--red">※</span>
             </div>
             <div class="form__group-content">
-                <div class="form__group-content-tel-inner">
-                    <div class="form__input-tel">
-                        <input type="text" name="tel_1" placeholder="080" />
+                <div class="form__group-content-inner">
+                    <div class="form__group-content-tel-inner">
+                        <div class="form__input-tel">
+                            <input type="text" name="tel_1" placeholder="080" value="{{ old('tel_1') }}" />
+                        </div>
+                            -
+                        <div class="form__input-tel">
+                            <input type="text" name="tel_2" placeholder="1234" value="{{ old('tel_2') }}" />
+                        </div>
+                            -
+                        <div class="form__input-tel">
+                            <input type="text" name="tel_3" placeholder="5678" value="{{  old('tel_3')}}" />
+                        </div>
                     </div>
-                        -
-                    <div class="form__input-tel">
-                        <input type="text" name="tel_2" placeholder="1234" />
-                    </div>
-                        -
-                    <div class="form__input-tel">
-                        <input type="text" name="tel_3" placeholder="5678" />
+                    <div class="form__error">
+                        @if ($errors->has('tel_1'))
+                        {{ $errors->first('tel_1') }}
+                        @elseif ($errors->has('tel_2'))
+                        {{ $errors->first('tel_2') }}
+                        @elseif ($errors->has('tel_3'))
+                        {{ $errors->first('tel_3') }}
+                        @endif
                     </div>
                 </div>
-                <div class="form__error"></div>
             </div>
         </div>
         <div class="form__group">
@@ -89,9 +113,13 @@
             <div class="form__group-content">
                 <div class="form__group-content-inner">
                     <div class="form__input-text">
-                        <input type="text" name="address" placeholder="例:東京都渋谷区千駄ヶ谷1-2-3">
+                        <input type="text" name="address" placeholder="例:東京都渋谷区千駄ヶ谷1-2-3" value="{{ old('address') }}">
                     </div>
-                    <div class="form__error"></div>
+                    <div class="form__error">
+                        @error('address')
+                        {{ $message }}
+                        @enderror
+                    </div>
                 </div>
             </div>
         </div>
@@ -102,7 +130,7 @@
             <div class="form__group-content">
                 <div class="form__group-content-inner">
                     <div class="form__input-text">
-                        <input type="text" name="building" placeholder="例:千駄ヶ谷マンション101">
+                        <input type="text" name="building" placeholder="例:千駄ヶ谷マンション101" value="{{ old('building') }}">
                     </div>
                     <div class="form__error"></div>
                 </div>
@@ -115,15 +143,19 @@
             <div class="form__group-content">
                 <div class="form__group-content-inner">
                     <div class="form__select">
-                        <select name="category_id" id="">
+                        <select name="category_id">
                             <option value="">選択してください</option>
                             <hr>
                             @foreach ($categories as $category)
-                            <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
+                            <option value="{{ $category['id'] }}" @if(old('category_id') == $category['id']) selected @endif>{{ $category['content'] }}</option>
                             @endforeach
                         </select>
                     </div>
-                    <div class="form__error"></div>
+                    <div class="form__error">
+                        @error('category_id')
+                        {{ $message }}
+                        @enderror
+                    </div>
                 </div>
             </div>
         </div>
@@ -134,9 +166,13 @@
             <div class="form__group-content">
                 <div class="form__group-content-inner">
                     <div class="form__textarea">
-                        <textarea name="detail" placeholder="お問い合わせ内容をご記載ください"></textarea>
+                        <textarea name="detail" placeholder="お問い合わせ内容をご記載ください">{{ old('detail') }}</textarea>
                     </div>
-                    <div class="form__error"></div>
+                    <div class="form__error">
+                        @error('detail')
+                        {{ $message }}
+                        @enderror
+                    </div>
                 </div>
             </div>
         </div>

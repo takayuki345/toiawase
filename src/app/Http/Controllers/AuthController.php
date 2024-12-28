@@ -6,15 +6,17 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Gender;
 use App\Models\Contact;
+use App\Http\Requests\ContactRequest;
 
 class AuthController extends Controller
 {
     public function index() {
         $categories = Category::all();
-        return view('index', compact('categories'));
+        $genders = Gender::all();
+        return view('index', compact('categories', 'genders'));
     }
 
-    public function confirm(Request $request) {
+    public function confirm(ContactRequest $request) {
         $contacts = $request->only(['first_name', 'last_name', 'gender_id', 'email', 'tel_1', 'tel_2', 'tel_3', 'address', 'building', 'category_id', 'detail']);
         $gender = Gender::find($request->gender_id);
         $category = Category::find($request->category_id);
