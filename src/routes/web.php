@@ -18,6 +18,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [AuthController::class, 'index']);
 });
 
+Route::post('/', [AuthController::class, 'modify']);
+
 Route::post('/confirm', [AuthController::class, 'confirm']);
 
 Route::get('/admin', [ContactController::class, 'index']);
