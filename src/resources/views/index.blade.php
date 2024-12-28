@@ -9,7 +9,8 @@
     <div class="contact-form__heading">
         <h2>Contact</h2>
     </div>
-    <form action="" class="form">
+    <form class="form" action="/confirm" method="post">
+        @csrf
         <div class="form__group">
             <div class="form__group-title">
                 お名前&nbsp;<span class="form__group-title--red">※</span>
@@ -36,11 +37,11 @@
             <div class="form__group-content">
                 <div class="form__group-content-inner">
                     <div class="form__input-radio">
-                        <input type="radio" id="male" name="gender" value="1" checked />
+                        <input type="radio" id="male" name="gender_id" value="1" checked />
                         <label for="male">男性</label>
-                        <input type="radio" id="female" name="gender" value="2" />
+                        <input type="radio" id="female" name="gender_id" value="2" />
                         <label for="female">女性</label>
-                        <input type="radio" id="others" name="gender" value="3" />
+                        <input type="radio" id="others" name="gender_id" value="3" />
                         <label for="others">その他</label>
                     </div>
                     <div class="form__error"></div>
@@ -114,11 +115,12 @@
             <div class="form__group-content">
                 <div class="form__group-content-inner">
                     <div class="form__select">
-                        <select name="category" id="">
+                        <select name="category_id" id="">
                             <option value="">選択してください</option>
-                            <option value="exchange">商品の交換について</option>
-                            <option value="product">製品</option>
-                            <option value="service">サービス</option>
+                            <hr>
+                            @foreach ($categories as $category)
+                            <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form__error"></div>
@@ -132,14 +134,14 @@
             <div class="form__group-content">
                 <div class="form__group-content-inner">
                     <div class="form__textarea">
-                        <textarea name="detail" id="" placeholder="お問い合わせ内容をご記載ください"></textarea>
+                        <textarea name="detail" placeholder="お問い合わせ内容をご記載ください"></textarea>
                     </div>
                     <div class="form__error"></div>
                 </div>
             </div>
         </div>
         <div class="form__button">
-            <button>確認画面</button>
+            <button type="submit">確認画面</button>
         </div>
     </form>
 </div>

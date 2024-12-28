@@ -10,48 +10,71 @@
         <h2>Confirm</h2>
     </div>
     <form class="form">
+        @csrf
         <div class="confirm-table">
             <table class="confirm-table__inner">
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">お名前</th>
-                    <td class="confirm-table__text">山田　太郎</hd>
+                    <td class="confirm-table__text">
+                        <input type="text" name="first_name" value="{{ $contacts['first_name'] }}" readonly />
+                        &emsp;
+                        <input type="text" name="last_name" value="{{ $contacts['last_name'] }}" readonly />
+                    </td>
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">性別</th>
-                    <td class="confirm-table__text">男性</hd>
+                    <td class="confirm-table__text">
+                        <input type="hidden" name="gender_id" value="{{ $contacts['gender_id'] }}" />
+                        {{ $params['gender']['name'] }}
+                    </td>
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">メールアドレス</th>
-                    <td class="confirm-table__text">test@example.com</hd>
+                    <td class="confirm-table__text">
+                        <input type="email" name="email" value="{{ $contacts['email'] }}" readonly />
+                    </td>
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">電話番号</th>
-                    <td class="confirm-table__text">08012345678</hd>
+                    <td class="confirm-table__text">
+                        <input type="text" name="tel" value="<?php echo $contacts['tel_1'] . $contacts['tel_2'] . $contacts['tel_3'];?>" readonly />
+                    </td>
+                    <td class="confirm-table__text">
+                    </td>
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">住所</th>
-                    <td class="confirm-table__text">東京都渋谷区千駄ヶ谷1-2-3</hd>
+                    <td class="confirm-table__text">
+                        <input type="text" name="address" value="{{ $contacts['address'] }}" readonly />
+                    </td>
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">建物名</th>
-                    <td class="confirm-table__text">千駄ヶ谷マンション101</hd>
+                    <td class="confirm-table__text">
+                        <input type="text" name="building" value="{{ $contacts['building'] }}" readonly />
+                    </td>
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">お問い合わせの種類</th>
-                    <td class="confirm-table__text">商品の交換について</hd>
+                    <td class="confirm-table__text">
+                        <input type="hidden" name="category_id" value="{{ $contacts['category_id'] }}" />
+                        {{ $params['category']['content'] }}
+                    </td>
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">お問い合わせ内容</th>
-                    <td class="confirm-table__text">届いた商品が注文した商品ではありませんでした。<br>商品の取り替えをお願いします。</hd>
+                    <td class="confirm-table__text">
+                        <textarea name="detail" readonly>{{ $contacts['detail'] }}</textarea>
+                    </td>
                 </tr>
             </table>
         </div>
         <div class="form__button">
             <div class="form__submit-save">
-                <input type="submit" value="送信" formaction="/" formmethod="post" />
+                <input type="submit" value="送信" formaction="/thanks" formmethod="post" />
             </div>
-            <div class="form__submit-modify">
-                <input type="submit" value="修正" formaction="/" formmethod="post" />
+            <div class="form__button-modify">
+                <button type="button" onclick="history.back()">修正</button>
             </div>
         </div>
     </form>

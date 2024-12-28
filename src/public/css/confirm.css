@@ -45,6 +45,18 @@
     padding: 10px 30px;
 }
 
+.confirm-table__text>input,
+.confirm-table__text>textarea {
+    field-sizing: content;
+    font-size: 16px;
+    border: none;
+}
+
+.confirm-table__text>textarea {
+    max-height: 150px;
+    width: 100%;
+    resize: none;
+}
 .form__button {
     margin-top: 30px;
     display: flex;
@@ -68,12 +80,11 @@
     cursor: pointer;
 }
 
-.form__submit-modify {
-    background: yellow;
+.form__button-modify {
     width: 80px;
 }
 
-.form__submit-modify>input {
+.form__button-modify>button {
     display: block;
     background-color: white;
     border: none;

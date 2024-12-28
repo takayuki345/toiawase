@@ -28,7 +28,7 @@
             </select>
             <input class="search-form__item-input" type="date" name="date" />
             <button class="search-form__button-search" type="submit" formaction="/admin/search" formmethod="get">検索</button>
-            <button class="search-form__button-reset" type="submit" formaction="" formmethod="">リセット</button>
+            <button class="search-form__button-reset" type="submit" formaction="/admin" formmethod="get">リセット</button>
         </form>
     </div>
     <div class="search-option">

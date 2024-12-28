@@ -12,7 +12,7 @@
     <div class="text-container">
         <div class="front-text">
             <div class="front-text__message">お問い合わせありがとうございました</div>
-            <a class="front-text__link" href="">HOME</a>
+            <a class="front-text__link" href="/">HOME</a>
         </div>
         <div class="back-text">
             <div class="back-text__message">Thank you</div>

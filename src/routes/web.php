@@ -18,22 +18,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [AuthController::class, 'index']);
 });
 
-Route::get('/confirm', function () {
-    return view('confirm');
-});
+Route::post('/confirm', [AuthController::class, 'confirm']);
 
 Route::get('/admin', [ContactController::class, 'index']);
 
 Route::get('/admin/search', [ContactController::class, 'search']);
 
-Route::get('thanks', function () {
-    return view('thanks');
-});
-
-// Route::get('/login', function () {
-//     return view('login');
-// });
-
+Route::post('/thanks', [AuthController::class, 'store']);
 
 Route::get('/register', function () {
     return view('auth.register');
