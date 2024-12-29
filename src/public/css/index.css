@@ -40,11 +40,17 @@
 }
 
 .form__group-content-name-inner {
-    width: 47%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .form__group-content-inner {
     width: 100%;
+}
+
+.form__group-content-name-inner>.form__input-text,
+.form__group-content-name-inner>.form__error {
+    width: 47%;
 }
 
 .form__input-text>input {

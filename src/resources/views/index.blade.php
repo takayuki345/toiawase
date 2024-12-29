@@ -16,24 +16,26 @@
                 お名前&nbsp;<span class="form__group-title--red">※</span>
             </div>
             <div class="form__group-content">
-                <div class="form__group-content-name-inner">
-                    <div class="form__input-text">
-                        <input type="text" name="first_name" placeholder="例:山田" value="{{ old('first_name',$contact['first_name']) }}" />
+                <div class="form__group-content-inner">
+                    <div class="form__group-content-name-inner">
+                        <div class="form__input-text">
+                            <input type="text" name="first_name" placeholder="例:山田" value="{{ old('first_name',$contact['first_name']) }}" />
+                        </div>
+                        <div class="form__input-text">
+                            <input type="text" name="last_name" placeholder="例:太郎" value="{{ old('last_name', $contact['last_name']) }}" />
+                        </div>
                     </div>
-                    <div class="form__error">
-                        @error('first_name')
-                        {{$message}}
-                        @enderror
-                    </div>
-                </div>
-                <div class="form__group-content-name-inner">
-                    <div class="form__input-text">
-                        <input type="text" name="last_name" placeholder="例:太郎" value="{{ old('last_name', $contact['last_name']) }}" />
-                    </div>
-                    <div class="form__error">
-                        @error('last_name')
-                        {{ $message }}
-                        @enderror
+                    <div class="form__group-content-name-inner">
+                        <div class="form__error">
+                            @error('first_name')
+                            {{$message}}
+                            @enderror
+                        </div>
+                        <div class="form__error">
+                            @error('last_name')
+                            {{ $message }}
+                            @enderror
+                        </div>
                     </div>
                 </div>
             </div>
